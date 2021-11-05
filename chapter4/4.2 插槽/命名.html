@@ -1,0 +1,53 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>命名</title>
+    <script src="../../lib/san.dev.js"></script>
+</head>
+
+<body>
+</body>
+
+<script>
+    const Inner = san.defineComponent({
+        template: `
+            <div>
+                <slot name="title"/>
+                <slot/>
+                <slot name="footer"/>
+            </div>
+        `,
+        initData: function () {
+            return {
+                text: '子组件的文案'
+            };
+        }
+    });
+
+    const Wrapper = san.defineComponent({
+        components: {
+            'ui-inner': Inner
+        },
+        template: `
+            <div>
+                <ui-inner>
+                    <div slot="title">自定义标题</div>
+                    <div>内容区</div>
+                    <div slot="footer">自定义脚注</div>
+                </ui-inner>
+            </div>
+        `,
+        initData: function () {
+            return {
+                text: '父组件的文案'
+            };
+        }
+    });
+
+    const app = new Wrapper();
+    app.attach(document.body);
+
+</script>
+
+</html>

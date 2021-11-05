@@ -1,0 +1,27 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>插值语法</title>
+    <script src="https://unpkg.com/san@latest/dist/san.dev.js"></script>
+</head>
+
+<body>
+</body>
+
+
+<script>
+    var Comp = san.defineComponent({
+		template: `<div>{{ text }}</div>`,
+        initData: function () {
+            return {
+                text: 'Hello San'
+            };
+        }
+    });
+
+    var myComp = new Comp();
+    myComp.attach(document.body);
+</script>
+
+</html>

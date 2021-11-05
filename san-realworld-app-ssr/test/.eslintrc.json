@@ -1,0 +1,13 @@
+{
+  "env": {
+    "jest": true
+  },
+  "plugins": [
+    "jest"
+  ],
+  "rules": {
+    "@typescript-eslint/no-var-requires": "off",
+    "no-unused-expressions": "off",
+    "no-new": "off"
+  }
+}

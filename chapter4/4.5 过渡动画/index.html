@@ -1,0 +1,79 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>过渡动画</title>
+    <script src="../../lib/san.dev.js"></script>
+</head>
+
+<body>
+</body>
+
+<script>
+    const Comp = san.defineComponent({
+        template: `
+            <div>
+                <button on-click="handleClick">
+                    按钮 A
+                </button>
+                <button
+                    s-if="isShowBtnB"
+                    s-transition="opacityTransition"
+                >
+                    按钮 B
+                </button>
+            </div>
+        `,
+        initData: function () {
+            return {
+                isShowBtnB: true
+            };
+        },
+        handleClick() {
+            const isShowBtnB = this.data.get('isShowBtnB');
+            this.data.set('isShowBtnB', !isShowBtnB);
+        },
+        opacityTransition: {
+            enter: function (el, done) {
+                let steps = 20;
+                let currentStep = 0;
+
+                function goStep() {
+                    if (currentStep >= steps) {
+                        el.style.opacity = 1;
+                        done();
+                        return;
+                    }
+
+                    el.style.opacity = 1 / steps * currentStep++;
+                    requestAnimationFrame(goStep);
+                }
+
+                goStep();
+            },
+            leave: function (el, done) {
+                let steps = 20;
+                let currentStep = 0;
+
+                function goStep() {
+                    if (currentStep >= steps) {
+                        el.style.opacity = 0;
+                        done();
+                        return;
+                    }
+
+                    el.style.opacity = 1 - 1 / steps * currentStep++;
+                    requestAnimationFrame(goStep);
+                }
+
+                goStep();
+            }
+        }
+    });
+
+    const app = new Comp();
+    app.attach(document.body);
+
+</script>
+
+</html>

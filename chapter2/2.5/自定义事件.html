@@ -1,0 +1,70 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>事件</title>
+    <script src="https://unpkg.com/san@latest/dist/san.dev.js"></script>
+</head>
+
+<body>
+</body>
+
+<script>
+    var ChildComp = san.defineComponent({
+        template: `
+            <div
+                on-click="handleClick"
+            >
+                子组件
+            </div>
+        `,
+
+        handleClick: function (e) {
+            this.fire('child-comp-click', e);
+        }
+    });
+
+    var ParentComp = san.defineComponent({
+        components: {
+            'child-comp': ChildComp
+        },
+
+        template: `
+            <div
+                on-click="handleClick"
+            >
+                父组件
+                <child-comp
+                    on-child-comp-click="handleChildCompClick"
+                />
+            </div>
+        `,
+
+        handleClick: function (e) {
+            console.log('handleClick 父组件', e);
+        },
+
+        handleChildCompClick: function (e) {
+            console.log('handleClick 子组件', e);
+        }
+    });
+
+    var Comp = san.defineComponent({
+        template: `
+            <div
+                on-click="handleClick"
+            >
+                测试事件
+            </div>
+        `,
+
+        handleClick: function (e) {
+            console.log('handleClick', e);
+        }
+    });
+
+    var myComp = new ParentComp();
+    myComp.attach(document.body);
+</script>
+
+</html>

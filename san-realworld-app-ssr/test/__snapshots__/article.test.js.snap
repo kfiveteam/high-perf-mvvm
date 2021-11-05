@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`article snapshot 1`] = `
+"<div class=\\"article\\">
+            <div class=\\"author\\">
+                <div class=\\"left\\">
+                    <img src=\\"https://static.productionready.io/images/smiley-cyrus.jpg\\" class=\\"avatar\\"><!--11-->
+                    <div class=\\"info\\">
+                        <div class=\\"name\\">
+                            用户名
+                        </div><!--12-->
+                        <div class=\\"date\\">
+                            July 6, 2021
+                        </div><!--13-->
+                    </div>
+                </div><!--10-->
+                <div class=\\"like\\">
+                    ❤ 0
+                </div>
+            </div>
+            <div class=\\"title\\">
+                文章标题
+            </div><!--14-->
+            <div class=\\"desc\\">
+                文章描述
+            </div><!--15-->
+            <div class=\\"more\\">
+                查看更多
+            </div><!--16-->
+        </div>"
+`;

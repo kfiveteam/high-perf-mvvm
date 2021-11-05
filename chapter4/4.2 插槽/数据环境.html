@@ -1,0 +1,49 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>数据环境</title>
+    <script src="../../lib/san.dev.js"></script>
+</head>
+
+<body>
+</body>
+
+<script>
+    const Card = san.defineComponent({
+        template: `
+            <div>
+                <slot/>
+                <div>内容区</div>
+                <div>脚注区</div>
+            </div>
+        `,
+        initData: function () {
+            return {
+                text: '子组件的文案'
+            };
+        }
+    });
+
+    const App = san.defineComponent({
+        components: {
+            'ui-card': Card
+        },
+        template: `
+            <div>
+                <ui-card>{{ text }}</ui-card>
+            </div>
+        `,
+        initData: function () {
+            return {
+                text: '父组件的文案'
+            };
+        }
+    });
+
+    const app = new App();
+    app.attach(document.body);
+
+</script>
+
+</html>

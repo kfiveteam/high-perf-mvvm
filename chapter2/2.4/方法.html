@@ -1,0 +1,35 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>方法</title>
+    <script src="https://unpkg.com/san@latest/dist/san.dev.js"></script>
+</head>
+
+<body>
+</body>
+
+
+<script>
+    var Comp = san.defineComponent({
+		template: `
+            <div>
+                1 + 2 = {{ sum(num1, num2) }}
+            </div>
+        `,
+        initData: function () {
+            return {
+                num1: 1,
+                num2: 2
+            };
+        },
+        sum: function (a, b) {
+            return a + b;
+        }
+    });
+
+    var myComp = new Comp();
+    myComp.attach(document.body);
+</script>
+
+</html>

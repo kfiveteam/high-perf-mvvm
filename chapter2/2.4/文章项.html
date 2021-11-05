@@ -1,0 +1,152 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>文章项</title>
+    <script src="https://unpkg.com/san@latest/dist/san.dev.js"></script>
+    <style>
+        .author {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 0 0 1rem;
+        }
+        .author .avatar {
+            display: inline-block;
+            vertical-align: middle;
+            height: 32px;
+            width: 32px;
+            border-radius: 30px;
+        }
+        .author .info {
+            margin: 0 1.5rem 0 .3rem;
+            display: inline-block;
+            vertical-align: middle;
+            line-height: 1rem;
+        }
+        .author .left .info .name {
+            display: block;
+            font-weight: bold;
+            color: #5cb85c;
+        }
+        .author .left .info .date {
+            display: block;
+            color: #bbb;
+            font-size: .8rem;
+        }
+        .author .like {
+            display: inline-block;
+            padding: .25rem .5rem;
+            font-size: .875rem;
+            line-height: 1.25;
+            text-align: center;
+            white-space: nowrap;
+            vertical-align: middle;
+            color: #5cb85c;
+            border: 1px solid #5cb85c;
+            border-radius: .2rem;
+        }
+
+        .article {
+            border-top: 1px solid rgba(0,0,0,.1);
+            padding: 1.5rem 0;
+        }
+        .title {
+            font-weight: bold;
+            font-size: 1.5rem;
+            margin-bottom: 3px;
+        }
+        .desc {
+            font-size: 24px;
+            color: #999;
+            margin-bottom: 15px;
+            font-size: 1rem;
+            line-height: 1.3rem;
+        }
+        .more {
+            max-width: 30%;
+            font-size: .8rem;
+            font-weight: 300;
+            color: #bbb;
+            vertical-align: middle;
+        }
+    </style>
+</head>
+
+<body>
+</body>
+
+<script>
+    var Article = san.defineComponent({
+        template: `
+            <div
+                class="article"
+            >
+                <div
+                    class="author"
+                >
+                    <div
+                        class="left"
+                    >
+                        <img
+                            src="{{ author.avatar }}"
+                            class="avatar"
+                        >
+                        <div
+                            class="info"
+                        >
+                            <div
+                                class="name"
+                            >
+                                {{ author.name }}
+                            </div>
+                            <div
+                                class="date"
+                            >
+                                {{ author.date }}
+                            </div>
+                        </div>
+                    </div>
+                    <div
+                        class="like"
+                    >
+                        ❤ {{ likeNum }}
+                    </div>
+                </div>
+                <div
+                    class="title"
+                >
+                    {{ title }}
+                </div>
+                <div
+                    class="desc"
+                >
+                    {{ desc }}
+                </div>
+                <div
+                    class="more"
+                >
+                    {{ more }}
+                </div>
+            </div>
+        `,
+        initData: function () {
+            return {
+                title: '文章标题',
+                desc: '文章描述',
+                more: '查看更多',
+                likeNum: 0,
+                author: {
+                    avatar: 'https://static.productionready.io/images/smiley-cyrus.jpg',
+                    name: '用户名',
+                    date: 'July 6, 2021'
+                }
+            };
+        }
+    });
+
+    var article = new Article();
+    article.attach(document.body);
+</script>
+
+</html>

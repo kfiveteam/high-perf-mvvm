@@ -1,0 +1,32 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>Hello San</title>
+    <script src="https://unpkg.com/san@latest/dist/san.dev.js"></script>
+</head>
+
+<body>
+</body>
+
+<script>
+    // console.log('san', san);
+</script>
+
+<script>
+    var MyComponent = san.defineComponent({
+        template: '<div>Hello {{ name }}</div>',
+        initData: function () {
+            return {
+                name: 'San'
+            };
+        }
+    });
+    console.log('san.defineComponent', san.defineComponent);
+    console.log('MyComponent', MyComponent);
+
+    var myComp = new MyComponent();
+    myComp.attach(document.body);
+</script>
+
+</html>

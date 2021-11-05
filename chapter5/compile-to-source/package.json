@@ -1,0 +1,19 @@
+{
+  "name": "ssr-basic",
+  "version": "1.0.0",
+  "private": true,
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "build": "node build.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "san": "^3.10.6",
+    "san-ssr": "^4.7.0"
+  }
+}

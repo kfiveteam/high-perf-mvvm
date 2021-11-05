@@ -1,0 +1,4 @@
+/**
+ * @file
+ */
+export default {}

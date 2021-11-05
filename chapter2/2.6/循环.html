@@ -1,0 +1,36 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>循环</title>
+    <script src="https://unpkg.com/san@latest/dist/san.dev.js"></script>
+</head>
+
+<body>
+</body>
+
+<script>
+    var Comp = san.defineComponent({
+        template: `
+            <div
+                s-for="item, index in list"
+            >
+                {{ index }} {{ item }}
+            </div>
+        `,
+        initData: function () {
+            return {
+                list: [
+                    'first',
+                    'second',
+                    'third'
+                ]
+            };
+        }
+    });
+
+    var myComp = new Comp();
+    myComp.attach(document.body);
+</script>
+
+</html>

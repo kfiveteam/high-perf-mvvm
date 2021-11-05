@@ -1,0 +1,4 @@
+/**
+ * @file
+ */
+module.exports = {};

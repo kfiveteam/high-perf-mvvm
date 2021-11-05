@@ -1,0 +1,62 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>EventBus</title>
+    <script src="../../lib/san.dev.js"></script>
+</head>
+
+<body>
+</body>
+
+<script>
+    const A = san.defineComponent({
+        template: `
+            <div
+                class="a"
+            >
+                A
+            </div>
+        `,
+        initData: function () {
+            return {
+                title: '文章标题',
+                desc: '文章描述',
+                more: '查看更多',
+                likeNum: 0,
+                author: {
+                    avatar: 'https://static.productionready.io/images/smiley-cyrus.jpg',
+                    name: '用户名',
+                    date: 'July 6, 2021'
+                }
+            };
+        },
+        handleClick: function (e) {
+            // console.log('handleClick', e);
+            let likeNum = this.data.get('likeNum');
+            likeNum++;
+            this.data.set('likeNum', likeNum);
+        }
+    });
+
+    const B = san.defineComponent({
+        template: `
+            <div>
+                B
+            </div>
+        `,
+        initData: function () {
+            return {
+                list: [
+                    {}, {}, {}, {}
+                ]
+            };
+        }
+    });
+
+    const articleList = new ArticleList();
+    articleList.attach(document.body);
+
+</script>
+
+</html>

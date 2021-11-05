@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SSR Basic</title>
+</head>
+<body>
+    <!-- render() 返回的 HTML 嵌入在这里 -->
+    <!--SSR_PLACEHOLDER-->
+
+    <!--页面需要的静态文件，包括 san.dev.js-->
+    <script src="https://cdn.jsdelivr.net/npm/san@3.10.6/dist/san.dev.js"></script>
+
+    <!--入口 San 组件的定义-->
+    <script src="app.js"></script>
+
+    <!-- 在浏览器端启动 San 应用 -->
+    <script>
+    new App({
+        // 传入服务端渲染得到的 HTML 根元素，san 将根据此元素进行反解，得到可交互的 San 应用
+        el: root
+    });
+    </script>
+</body>
+</html>

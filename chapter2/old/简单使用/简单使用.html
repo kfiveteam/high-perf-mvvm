@@ -1,0 +1,29 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>Hello World San</title>
+        <!-- 引入 San 基础库 -->
+        <script src="https://unpkg.com/san@latest/dist/san.dev.js"></script>
+    </head>
+    <body>
+    </body>
+    <script>
+        // 定义一个 San 组件，返回值相当于一个构造函数
+        var MyApp = san.defineComponent({
+            // 模板部分
+            template: '<div>Hello {{ name }}</div>',
+            // 初始数据部分
+            initData: function () {
+                return {
+                    name: 'San',
+                    age: '18',
+                    color: 'red'
+                };
+            }
+        });
+        // 使用构造函数生成一个实例
+        var myApp = new MyApp();
+        // 添加 San 组件至 DOM
+        myApp.attach(document.body);
+    </script>
+</html>

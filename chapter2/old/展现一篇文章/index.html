@@ -1,0 +1,74 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+</head>
+<style>
+    .article {}
+
+    .author {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+</style>
+
+<body>
+    <!-- 文章 -->
+    <div class="article">
+        <div class="author">
+            <!-- 作者 -->
+            <div class="author-info">
+                <!-- 头像 -->
+                <div class="avatar">
+                    <img src="">
+                </div>
+                <div>
+                    <div class="author-name">
+                        海明威
+                    </div>
+                    <div class="date">
+                        April 20, 2021
+                    </div>
+                </div>
+            </div>
+            <div class="like">
+                ❤
+                <span class="like-count">
+                    0
+                </span>
+            </div>
+        </div>
+        <div class="title">
+            老人与海
+        </div>
+        <div class="desc">
+            《老人与海》（英语：The Old Man and the Sea）是美国作家欧内斯特·米勒·海明威生前最后一部主要作品，于1952年出版。该书改编自真实故事，剧情讲述一名古巴老渔夫圣地亚哥（Santiago）[注释
+            1]与一条大马林鱼的缠斗。该书改编自海明威在1935年得知的真实故事。他在3年后开始动笔，但中途分心去写《丧钟为谁而鸣》，直至1950年才继续。海明威认为《老人与海》是“他这辈子最好的作品”。
+            《老人与海》于1952年9月1日出版，甫出版即成为美国每月之书俱乐部的选书。海明威因该书而荣获普利策小说奖及诺贝尔文学奖，从此声名大噪。2003年，该书在英国广播公司（BBC）举办的“大阅读”（The Big
+            Read）票选活动中名列第173名。《老人与海》曾三度改编成电影。
+        </div>
+        <div class="more">
+            Read more...
+        </div>
+    </div>
+</body>
+<script>
+    // 新建变量存储计数
+    let likeCount = 0;
+
+    // 获取 dom
+    const domLike = document.querySelector('.like');
+    const domLikeCount = document.querySelector('.like-count');
+
+    // 监听事件
+    domLike.addEventListener('click', function (e) {
+        // 计数
+        likeCount++;
+
+        // 更新视图
+        domLikeCount.innerText = likeCount;
+    }, false);
+</script>
+
+</html>

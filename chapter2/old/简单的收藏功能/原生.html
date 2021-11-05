@@ -1,0 +1,182 @@
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>收藏功能 不使用任何框架</title>
+    </head>
+    <body>
+        <div>
+            <div
+                id="star"
+            >
+                <span>我是一篇文章，喜欢请收藏</span>
+                <span>⭐️</span>
+                <span id="starCount">0</span>
+            </div>
+        </div>
+        <div
+            id="wrapper"
+        >
+        </div>
+    </body>
+    <script>
+        // 新建变量存储计数
+        let starCount = 0;
+
+        // 获取 dom
+        const domStar = document.querySelector('#star');
+        const domStarCount = document.querySelector('#starCount');
+
+        // 监听事件
+        domStar.addEventListener('click', function (e) {
+            // 计数
+            starCount++;
+
+            // 更新视图
+            domStarCount.innerText = starCount;
+        }, false);
+
+        /**
+         * 得到每项的 html
+         *
+         * @param {string} title 文章标题
+         * @param {number} starCount 收藏数
+         *
+         * @return {string} itemHtml 每项的 html 字符串
+         */
+        // function getItemHtml(title, starCount) {
+        //     return `
+        //         <div
+        //             class="star"
+        //         >
+        //             <span class="title">${title}</span>
+        //             <span class="icon">⭐️</span>
+        //             <span class="star-count">${starCount}</span>
+        //         </div>
+        //     `;
+        // }
+
+        // // 最终要放入容器里的 html 字符串
+        // let html = '';
+
+        // // 假设列表长度为 10
+        // for (let i = 0; i < 10; i++) {
+        //     // 得到每一项的 html 字符串
+        //     const itemHtml = getItemHtml(`测试标题${i + 1}`, 0);
+        //     // 字符串拼接
+        //     html += itemHtml;
+        // }
+
+        // // 获得容器的 dom 节点
+        // const domWrapper = document.querySelector('#wrapper');
+        // // 把拼接好的 html 字符串放入容器
+        // domWrapper.innerHTML = html;
+
+        /**
+         * 得到每项的 html
+         *
+         * @param {string} title 文章标题
+         * @param {number} starCount 收藏数
+         *
+         * @return {string} itemHtml 每项的 html 字符串
+         */
+        // function getItemDom(title, starCount) {
+        //     // 通过浏览器 api 生成 dom 节点
+        //     const domDiv = document.createElement('div');
+        //     // 将 html 放入
+        //     domDiv.innerHTML = `
+        //         <div
+        //             class="star"
+        //         >
+        //             <span class="title">${title}</span>
+        //             <span class="icon">⭐️</span>
+        //             <span class="star-count">${starCount}</span>
+        //         </div>
+        //     `;
+
+        //     // 内部维护一个收藏计数器
+        //     let mStarCount = starCount;
+        //     // 获得内部的收藏计数 dom
+        //     const domStarCount = domDiv.querySelector('.star-count');
+
+        //     // 注册点击事件
+        //     domDiv.addEventListener('click', function (e) {
+        //         // 计数++
+        //         mStarCount++;
+        //         // 更新计数
+        //         domStarCount.innerText = mStarCount;
+        //     }, false);
+
+        //     // 直接返回 dom
+        //     return domDiv;
+        // }
+
+        // // 获得容器的 dom 节点
+        // const domWrapper = document.querySelector('#wrapper');
+
+        // // 假设列表长度为 10
+        // for (let i = 0; i < 10; i++) {
+        //     // 得到每一项的 dom
+        //     const domItem = getItemDom(`测试标题${i + 1}`, 0);
+        //     // 依次添加到容器 dom 中
+        //     domWrapper.appendChild(domItem);
+        // }
+
+        class Article {
+
+            // dom 元素
+            el = null;
+            // 数据
+            data = {};
+
+            // 构造函数
+            constructor(title, starCount) {
+                this.data = this.initData(arguments);
+            }
+
+            // 初始化数据
+            initData(args) {
+                return {
+                    // 标题
+                    title: args[0] || '',
+                    // 收藏计数
+                    starCount:args[1] || 0
+                }
+            }
+
+            // 渲染
+            render() {
+                const template = `
+                    <div
+                        class="star"
+                    >
+                        <span class="title">${this.data.title}</span>
+                        <span class="icon">⭐️</span>
+                        <span class="star-count">${this.data.starCount}</span>
+                    </div>
+                `;
+                this.el = document.createElement('div');
+                this.el.innerHTML = template;
+                this.el.addEventListener('click', this.handleClick.bind(this), false);
+                return this.el;
+            }
+
+            // 点击事件
+            handleClick(e) {
+                console.log('this', this);
+                this.data.starCount++;
+            }
+        }
+
+        // 获得容器的 dom 节点
+        const domWrapper = document.querySelector('#wrapper');
+
+        // 假设列表长度为 10
+        for (let i = 0; i < 10; i++) {
+            // 得到每一项的 dom
+            const domItem = new Article(`测试标题${i + 1}`).render();
+            // 依次添加到容器 dom 中
+            domWrapper.appendChild(domItem);
+        }
+
+    </script>
+</html>

@@ -1,0 +1,89 @@
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>搜索框</title>
+    <script src="https://unpkg.com/san@latest/dist/san.dev.js"></script>
+    <style>
+        .search {
+            display: flex;
+            padding: 20px;
+        }
+        .search-input {
+            padding: .75rem 1.5rem;
+            font-size: 1.25rem;
+            border-radius: .3rem;
+            background-color: #fff;
+            background-image: none;
+            border: 1px solid rgba(0,0,0,.15);
+        }
+        .btn {
+            margin-left: 10px;
+            padding: .75rem 1.5rem;
+            font-size: 1.25rem;
+            border-radius: .3rem;
+            color: #fff;
+            background-color: #5cb85c;
+            display: inline-block;
+            font-weight: 400;
+            line-height: 1.25;
+            text-align: center;
+            white-space: nowrap;
+            vertical-align: middle;
+            cursor: pointer;
+            user-select: none;
+            border: 1px solid #5cb85c;
+        }
+    </style>
+</head>
+
+<body>
+</body>
+
+<script>
+    let Search = san.defineComponent({
+        template: `
+            <div
+                class="search"
+            >
+                <input
+                    value="{= query =}"
+                    on-input="handleInput"
+                    class="search-input"
+                />
+                <div
+                    class="btn"
+                >
+                    搜索
+                </div>
+                <div
+                    on-click="handleClearClick"
+                    class="btn"
+                >
+                    清空
+                </div>
+            </div>
+        `,
+
+        initData: function () {
+            return {
+                query: ''
+            };
+        },
+
+        handleInput: function () {
+            const query = this.data.get('query');
+            console.log('query', query);
+        },
+
+        handleClearClick: function (e) {
+            console.log('handleClearClick');
+            this.data.set('query', '');
+        }
+    });
+
+    var search = new Search();
+    search.attach(document.body);
+</script>
+
+</html>

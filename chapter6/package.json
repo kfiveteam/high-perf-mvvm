@@ -1,0 +1,17 @@
+{
+  "name": "san-cli-demo",
+  "bin": {
+    "sanx": "san.js"
+  },
+  "version": "1.0.0",
+  "private": true,
+  "main": "index.js",
+  "license": "MIT",
+  "dependencies": {
+    "git-clone": "^0.1.0",
+    "prompts": "^2.4.1",
+    "through2": "^4.0.2",
+    "vinyl-fs": "^3.0.3",
+    "yargs": "^17.0.1"
+  }
+}
