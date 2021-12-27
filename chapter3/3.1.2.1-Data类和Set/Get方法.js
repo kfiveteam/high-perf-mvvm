@@ -2,7 +2,7 @@ const {
     parseExpr,
     ExprType,
     evalExpr
-} = require('./san.dev');
+} = require('../san.dev');
 
 /**
  * 数据类
