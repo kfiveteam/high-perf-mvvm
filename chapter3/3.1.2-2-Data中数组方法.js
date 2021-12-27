@@ -1,38 +1,4 @@
 /**
- * 获取数据项
- *
- * @param {string|Object?} expr 数据项路径
- * @param {Data?} callee 当前数据获取的调用环境
- * @return {*}
- */
- Data.prototype.get = function (expr, callee) {
-    var value = this.raw;
-    if (!expr) {
-        return value;
-    }
-
-    if (typeof expr !== 'object') {
-        expr = parseExpr(expr);
-    }
-
-    var paths = expr.paths;
-    callee = callee || this;
-
-    value = value[paths[0].value];
-
-    if (value == null && this.parent) {
-        value = this.parent.get(expr, callee);
-    }
-    else {
-        for (var i = 1, l = paths.length; value != null && i < l; i++) {
-            value = value[paths[i].value || evalExpr(paths[i], callee)];
-        }
-    }
-
-    return value;
-};
-
-/**
  * 数组数据项splice操作
  *
  * @param {string|Object} expr 数据项路径

@@ -8,7 +8,6 @@
 
 import parseName from '../parse-name';
 import Store from '../store';
-import emitDevtool from '../devtool/emitter';
 
 /**
  * san组件的connect

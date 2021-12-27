@@ -1,5 +1,0 @@
-<template>
-    <ul>
-        <li s-for="number in numbers">{{ number }}</li>
-    </ul>
-</template>
