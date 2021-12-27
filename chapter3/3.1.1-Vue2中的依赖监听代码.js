@@ -13,6 +13,14 @@ function defineReactive(obj, key, value) {
 
             // 在这里响应数据变化，触发视图更新等操作。
             // dep.notify()
+            console.log('data changed');
         }
     })
 }
+
+
+var data = {};
+
+defineReactive(data, 'a', 123);
+
+data.a = 456;
